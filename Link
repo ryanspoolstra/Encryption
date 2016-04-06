@@ -1,0 +1,121 @@
+package encryption;
+
+public class LinkedList {
+	private Node top;
+	private Node tail;
+
+	public LinkedList(){
+		top = null;
+		tail = null;
+	}
+
+	public boolean remove(String s){
+
+		// case 0: no list
+		if(top == null)
+			return false;
+
+		// case 1a: list exists, searched char is first node
+		if(top.getData() == (s)){
+			//top points to the node 2 ahead
+			top = top.getNext();
+			return true;
+		}
+
+		// case 1b: list exists, searched char is last node
+		if(tail.getData() == s){
+			tail = tail.getPrevious();
+			return true;
+		}
+
+		// case 1c: list exists, searched char is in middle of list
+		Node temp = top;
+		while(temp.getNext() != null){
+			if(temp.getNext().getData() == s){
+				temp.setNext(temp.getNext().getNext());
+				return true;
+			}
+			temp = temp.getNext();
+		}
+
+		return false;
+	}
+
+	public boolean addToTop(String s){
+
+		// no list
+		if(top == null){
+			top = new Node(s, null, null);
+			tail = new Node(s, null, top);
+			top.setNext(tail);
+			return true;
+		}
+
+		// list exists
+		Node temp = new Node();
+		temp.setData(s);
+		temp.setNext(top);
+		top = temp;
+
+		return true;
+	}
+
+	public boolean addAfterPos(String s, int pos){
+		// no list
+		if(top == null){
+			top  = new Node(s, null, null);
+			return true;
+		}
+
+		// middle of list
+		int counter = 0;
+		Node temp = top;
+		while(temp != null){
+			counter++;
+			if(counter == pos){
+				// if last node
+				if(temp.getNext() == null){
+					temp.setPrevious(tail);
+					tail = temp;
+					return true;
+				}
+				// if middle node
+				else{
+					temp.setNext(new Node(s, temp.getNext(), temp.getPrevious()));
+					return true;
+				}
+			
+			}
+			temp = temp.getNext();
+		}
+
+
+		return false;
+	}
+
+	public int getLength(){
+		int length = 0;
+		if(top == null)
+			return 0;
+
+		Node temp = top;
+		while(temp != null){
+			length++;
+			temp = temp.getNext();
+		}
+		return length;
+	}
+	
+	public static void main(String[] args){
+		LinkedList list = new LinkedList();
+		
+		list.addToTop("H");
+//		list.addToTop("e");
+//		list.addToTop("l");
+//		list.addToTop("l");
+//		list.addToTop("o");
+		list.remove("H");
+		
+		
+	}
+}
