@@ -1,0 +1,23 @@
+package encryption;
+
+public class Mix implements IMix{
+
+	/** Linked list of characters representing a message (string) */ 
+	private LinkedList message;
+	
+	@Override
+	public void setInitialMessage(String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String processCommand(String command) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public void display(){
+		
+	}
+}
