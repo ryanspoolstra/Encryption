@@ -1,0 +1,11 @@
+package encryption;
+
+public class UnMix implements IUnMix{
+
+	@Override
+	public String UnMixUsingFile(String filename, String mixedMessage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
