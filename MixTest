@@ -1,0 +1,68 @@
+package encryption;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class MixTest {
+
+	@Test
+	public void testAddToTop(){
+		LinkedList list = new LinkedList();
+		
+		assertTrue(list.addToTop("k"));
+		
+		assertTrue(list.addToTop("r"));
+		
+		assertTrue(list.addToTop("a"));
+		
+		assertTrue(list.addToTop("d"));
+		
+		assertTrue(list.remove("d"));
+		
+		assertTrue(list.remove("r"));
+		
+		assertTrue(list.remove("a"));
+		
+		assertTrue(list.remove("k"));
+	}
+	
+	@Test
+	public void testAppend(){
+		
+		LinkedList list = new LinkedList();
+		
+		assertTrue(list.remove("a"));
+	}
+	
+	@Test
+	public void testGetLength(){
+		LinkedList list = new LinkedList();
+		
+		assertTrue(list.addToTop("k"));
+		
+		assertTrue(list.addToTop("r"));
+		
+		assertTrue(list.addToTop("a"));
+		
+		assertTrue(list.addToTop("d"));
+		
+		assertTrue(list.addToTop("d"));
+		
+		assertEquals(list.getLength(), 5);
+	}
+	
+	@Test
+	public void testAddAfterPos(){
+		LinkedList list = new LinkedList();
+		
+		assertTrue(list.addAfterPos("d", 0));
+		
+		assertTrue(list.addAfterPos("a", 1));
+		
+		assertTrue(list.addAfterPos("r", 2));
+		
+		assertTrue(list.remove("a"));
+	}
+
+}
